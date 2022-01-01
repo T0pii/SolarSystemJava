@@ -1,15 +1,15 @@
 package systemeSolaire;
 import java.awt.*;
 
-public class Astre {
+public abstract class Astre {
     protected String nom;
     protected Color couleur;
-    protected float diametre;
+    protected float rayon;
 
     public Astre(String nom, Color couleur, float rayon) {
         this.nom=nom;
         this.couleur=couleur;
-        this.diametre=rayon;
+        this.rayon=rayon;
     }
 
     public Astre() {
@@ -24,7 +24,7 @@ public class Astre {
         return couleur;
     }
 
-    public float getDiametre() {
-        return diametre;
+    public float getRayon() {
+        return rayon;
     }
 }
