@@ -1,34 +1,40 @@
 import librairies.StdDraw;
+import systemeSolaire.Astre;
+import systemeSolaire.Etoile;
+import systemeSolaire.Planète;
+
+import java.util.Arrays;
+import java.util.List;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
-
-import static java.awt.Color.BLACK;
-
 
 public class Main_progr {
 
     public static void main(String[] args) {
+
         long tempsEnJours = 0;
         long nbrMois = 0;
         long nbrAnnee = 0;
         int countMois;
 
-        StdDraw.setCanvasSize(800, 800);
+        StdDraw.setScale(0,10);
+        StdDraw.setCanvasSize(700, 700);
         StdDraw.setPenRadius(0.1);
         StdDraw.setFont(new Font("Arial", Font.BOLD, 20));
-        StdDraw.setPenColor(Color.WHITE);
-        StdDraw.clear(BLACK);
-        StdDraw.text(0.5,0.95,"Temps écoulé : " + nbrAnnee + "a " + nbrMois + "m " + tempsEnJours + "j");
+        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.clear(Color.BLACK);
+
+        StdDraw.text(5,9.5,"Temps écoulé : " + nbrAnnee + "a " + nbrMois + "m " + tempsEnJours + "j");
 
         while(true){
             try {
+                StdDraw.setScale(0,10);
                 TimeUnit.MILLISECONDS.sleep(100);
-                StdDraw.filledRectangle(1,1,1,0.1);
-                StdDraw.setPenColor(BLACK);
+                StdDraw.filledRectangle(10,10,10,1);
+                StdDraw.setPenColor(Color.BLACK);
+
                 TimeUnit.MILLISECONDS.sleep(1);
-                tempsEnJours = tempsEnJours + 1;
-
-
+                tempsEnJours = tempsEnJours + 8;
                 if( (nbrMois+1) % 2 == 0 || nbrMois!= 2){
                     countMois = 31;
                 }else if(nbrMois == 2){
@@ -36,22 +42,44 @@ public class Main_progr {
                 }else{
                     countMois = 30;
                 }
-
                 if(tempsEnJours > countMois){
                     nbrMois = nbrMois + 1;
                     tempsEnJours = tempsEnJours - countMois;
                 }
-
                 if(nbrMois > 12){
                     nbrAnnee = nbrAnnee + 1;
                     nbrMois = nbrMois - 12;
                 }
-                StdDraw.text(0.5,0.95,"Temps écoulé : " + nbrAnnee + "a " + nbrMois + "m " + tempsEnJours + "j");
 
-                StdDraw.setPenRadius(0.01);
                 StdDraw.setPenColor(Color.WHITE);
-                StdDraw.filledCircle(0.5,0.5,0.10);
-                StdDraw.setPenRadius(0.1);
+                StdDraw.text(5,9.5,"Temps écoulé : " + nbrAnnee + "a " + nbrMois + "m " + tempsEnJours + "j");
+
+
+                Etoile soleil = new Etoile("Soleil",Color.YELLOW,0.2,5,5);
+                soleil.afficheToi();
+
+                Planète terre = new Planète("Terre",Color.GREEN,0.1,1,60);
+                terre.afficheTonOrbite();
+                terre.afficheToi();
+
+                List<Planète> planètes;
+                planètes= Arrays.asList(
+                    new Planète("Mercure",Color.DARK_GRAY,0.0025,0.8,87.96),
+                    new Planète("Vénus",Color.LIGHT_GRAY,0.005,0.5,224.69),
+                    new Planète("Terre",Color.GREEN,0.02,0.6,365.256),
+                    new Planète("Mars",Color.RED,0.0325,0.4,686.97),
+                    new Planète("Jupiter",Color.ORANGE,0.0375,1.4,4332.589),
+                    new Planète("Saturne",Color.YELLOW,0.05,2.5,10759.23),
+                    new Planète("Uranus",Color.CYAN,0.125,3,30685.4),
+                    new Planète("Neptune",Color.BLUE,0.2,4,60216.8)
+                    );
+
+                for(Planète p:planètes) {
+                    p.afficheTonOrbite();
+                    p.afficheToi();
+                }
+
+                StdDraw.setPenColor(Color.BLACK);
             }  catch (InterruptedException e) {
                 e.printStackTrace();
             }
