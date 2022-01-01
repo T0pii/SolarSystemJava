@@ -1,2 +1,4 @@
 .idea/vcs.xml
 target/classes/*
+target\classes\*
+target/classes/Main_progr.class
