@@ -40,9 +40,9 @@ public class Main_progr {
             try {
                 StdDraw.setScale(0,10);
                 StdDraw.enableDoubleBuffering();
-                TimeUnit.MILLISECONDS.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(24);
 
-                tempsEnJours = tempsEnJours + 2;
+                tempsEnJours = tempsEnJours + 1;
                 if( (nbrMois+1) % 2 == 0 || nbrMois!= 2){
                     countMois = 31;
                 }else if(nbrMois == 2){
