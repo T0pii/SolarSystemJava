@@ -68,9 +68,9 @@ public class Main_progr {
 
                 soleil.afficheToi();
                 for(Planète p:planètes) {
-                    p.deplaceToi(soleil);
                     p.afficheTonOrbite();
                     p.afficheToi();
+                    p.deplaceToi(soleil);
                 }
                 StdDraw.show();
                 StdDraw.disableDoubleBuffering();
