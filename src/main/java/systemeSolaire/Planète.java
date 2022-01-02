@@ -27,14 +27,18 @@ public class Planète extends Astre {
         this.y = y;
     }
 
-    public void deplaceToi() {
-
+    public void deplaceToi(Etoile referentiel) {
+        double x = this.x - referentiel.x;
+        double y = this.y - referentiel.y;
+        //Formules trouvées en ligne
+        double xFinal = x * Math.cos(Math.toRadians(360/this.revolution)) - y * Math.sin(Math.toRadians(360/this.revolution));
+        double yFinal = x * Math.sin(Math.toRadians(360/this.revolution)) + y * Math.cos(Math.toRadians(360/this.revolution));
+        this.modifieTesCoords(referentiel.x + xFinal, referentiel.y + yFinal);
     }
 
     public void afficheTonOrbite() {
         StdDraw.setPenColor(Color.WHITE);
         StdDraw.setPenRadius(0.001);
-        //StdDraw.circle(0.5,0.5,this.getDistance());
         StdDraw.circle(5,5,this.getDistance());
     }
 
