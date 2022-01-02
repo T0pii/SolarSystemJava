@@ -1,5 +1,4 @@
 import librairies.StdDraw;
-import systemeSolaire.Astre;
 import systemeSolaire.Etoile;
 import systemeSolaire.Planète;
 
